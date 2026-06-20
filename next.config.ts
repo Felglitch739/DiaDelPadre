@@ -7,7 +7,8 @@ const nextConfig: NextConfig = {
   basePath: isProd ? '/DiaDelPadre' : '',
   assetPrefix: isProd ? '/DiaDelPadre/' : '',
   images: {
-    unoptimized: true, // Required for static export in GitHub Pages
+    loader: 'custom',
+    loaderFile: './imageLoader.ts',
   },
 };
 
