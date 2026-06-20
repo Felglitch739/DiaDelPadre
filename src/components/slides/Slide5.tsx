@@ -1,0 +1,191 @@
+"use client";
+
+import React, { useEffect, useRef } from "react";
+import anime from "animejs";
+import Image from "next/image";
+import Particles from "../Particles";
+import SplitText from "../SplitText";
+
+interface SlideProps {
+  isActive: boolean;
+  onPhotoClick: (src: string) => void;
+}
+
+const ALL_PHOTOS = [
+  "/photos/dad&me&sister.jpg",
+  "/photos/dad&me.jpg",
+  "/photos/dad&me2.jpg",
+  "/photos/dad&mebaby2.jpg",
+  "/photos/dad&mebaby3.jpg",
+  "/photos/dad&mebaby4.jpg",
+  "/photos/dad1.jpg",
+  "/photos/dad2.jpg",
+  "/photos/dad3.jpg",
+  "/photos/dad4.jpg",
+  "/photos/dad5.jpg",
+  "/photos/me&dadinmyhsgraduation.jpg",
+  "/photos/youngerDad.jpg",
+];
+
+export default function Slide5({ isActive, onPhotoClick }: SlideProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current || !galleryRef.current) return;
+    
+    const headingChars = containerRef.current.querySelectorAll("h2 .split-char");
+    const photos = galleryRef.current.querySelectorAll(".outro-photo");
+    const innerPhotos = galleryRef.current.querySelectorAll(".outro-photo-inner");
+
+    if (isActive) {
+      const tl = anime.timeline();
+
+      // ─── Grid-based distribution to spread photos evenly ───
+      // We create a grid of cells and place each photo in a unique cell
+      const cols = 4;
+      const rows = 4;
+      const totalCells = cols * rows;
+      
+      // Create shuffled cell indices so photos go to different spots
+      const cellIndices: number[] = [];
+      for (let i = 0; i < totalCells; i++) cellIndices.push(i);
+      // Fisher-Yates shuffle
+      for (let i = cellIndices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cellIndices[i], cellIndices[j]] = [cellIndices[j], cellIndices[i]];
+      }
+
+      // Position each photo in its assigned grid cell with a small random offset
+      photos.forEach((photo, idx) => {
+        const cellIdx = cellIndices[idx % totalCells];
+        const col = cellIdx % cols;
+        const row = Math.floor(cellIdx / cols);
+
+        // Calculate percentage position within the viewport
+        // Each cell spans (100/cols)% wide and (100/rows)% tall
+        const cellW = 100 / cols;
+        const cellH = 100 / rows;
+
+        // Center of the cell + small random jitter (±25% of cell size)
+        const xPercent = cellW * col + cellW * 0.5 + (Math.random() - 0.5) * cellW * 0.5;
+        const yPercent = cellH * row + cellH * 0.5 + (Math.random() - 0.5) * cellH * 0.5;
+
+        // Convert to viewport-relative transform from center
+        // Photos start at center (50%, 50%), so offset = position - 50%
+        const xOffset = xPercent - 50;
+        const yOffset = yPercent - 50;
+
+        anime.set(photo, {
+          opacity: 1,
+          translateX: xOffset + 'vw',
+          translateY: yOffset + 'vh',
+        });
+      });
+
+      // Ensure inner photos start invisible and small
+      anime.set(innerPhotos, {
+        opacity: 0,
+        scale: 0.3,
+        rotate: () => anime.random(-20, 20) + 'deg',
+      });
+
+      // Photos bursting in sequentially
+      tl.add({
+        targets: innerPhotos,
+        scale: [0.3, 1],
+        opacity: [0, 0.7],
+        rotate: () => anime.random(-8, 8) + 'deg',
+        duration: 2000,
+        delay: anime.stagger(100),
+        easing: "easeOutElastic(1, .8)",
+      }, 200);
+
+      // Photos continuous slow floating after appearing
+      tl.add({
+        targets: photos,
+        translateY: "+=8vh",
+        duration: 15000,
+        easing: "linear",
+      }, 0);
+
+      // Main Text appears AFTER all photos
+      tl.add({
+        targets: headingChars,
+        opacity: [0, 1],
+        scale: [2, 1],
+        filter: ["blur(10px)", "blur(0px)"],
+        duration: 1200,
+        delay: anime.stagger(50),
+        easing: "easeOutExpo",
+      }, 3000);
+
+      tl.add({
+        targets: subtitleRef.current,
+        translateY: [20, 0],
+        opacity: [0, 1],
+        duration: 1000,
+        easing: "easeOutExpo",
+      }, "-=800");
+
+    } else {
+      anime.set([headingChars, subtitleRef.current, photos, innerPhotos], {
+        opacity: 0,
+      });
+      anime.remove([photos, innerPhotos]);
+    }
+  }, [isActive]);
+
+  return (
+    <div className="w-full h-full relative flex flex-col items-center justify-center p-6 text-center overflow-hidden bg-zinc-950">
+      
+      {/* Particle System */}
+      <Particles isActive={isActive} count={40} color="bg-amber-400" />
+
+      {/* Background Montage Gallery */}
+      <div 
+        ref={galleryRef} 
+        className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none mix-blend-lighten will-change-transform"
+      >
+        {ALL_PHOTOS.map((src, idx) => (
+          <div 
+            key={idx}
+            className="outro-photo absolute w-36 md:w-56 aspect-[4/5] md:aspect-video pointer-events-auto hover:z-40! will-change-transform"
+          >
+            <div
+              onClick={() => onPhotoClick(src)}
+              className="outro-photo-inner w-full h-full relative rounded-xl overflow-hidden border border-zinc-800/80 shadow-2xl cursor-pointer transition-all duration-500 hover:scale-110 hover:border-amber-500/50 hover:shadow-amber-500/20"
+            >
+              <Image 
+                src={src} 
+                alt={`Memory ${idx}`} 
+                fill 
+                sizes="(max-width: 768px) 192px, 320px"
+                className="object-cover grayscale hover:grayscale-0 transition-all duration-700" 
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/40 via-zinc-950/80 to-zinc-950/90 z-5" />
+
+      <div ref={containerRef} className="z-20 relative px-4 w-full max-w-[100vw]">
+        <h2 
+          ref={headingRef}
+          className="text-4xl md:text-8xl font-black mb-4 md:mb-6 text-transparent bg-clip-text bg-gradient-to-t from-zinc-400 to-zinc-50"
+        >
+          <SplitText>Gracias por todo.</SplitText>
+        </h2>
+        <p 
+          ref={subtitleRef}
+          className="text-2xl md:text-5xl text-amber-500 font-bold opacity-0 drop-shadow-[0_0_15px_rgba(245,158,11,0.8)]"
+        >
+          Te quiero mucho, pa.
+        </p>
+      </div>
+    </div>
+  );
+}
