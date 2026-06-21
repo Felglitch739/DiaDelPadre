@@ -9,12 +9,16 @@ import Slide3 from "./slides/Slide3";
 import Slide4 from "./slides/Slide4";
 import Slide5 from "./slides/Slide5";
 import Lightbox from "./Lightbox";
+import Loader from "./Loader";
+import AudioPlayer from "./AudioPlayer";
+import Particles from "./Particles";
 
 const SLIDE_COUNT = 5;
 
 export default function Presentation() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [lightboxPhoto, setLightboxPhoto] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -61,7 +65,7 @@ export default function Presentation() {
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault(); // Block native scroll
 
-      if (isAnimatingRef.current || lightboxPhotoRef.current) return;
+      if (!isLoaded || isAnimatingRef.current || lightboxPhotoRef.current) return;
 
       wheelAccumulator += e.deltaY;
 
@@ -210,9 +214,17 @@ export default function Presentation() {
   }, [goToSlide]);
 
   return (
-    <div ref={rootRef} className="w-full h-full overflow-hidden bg-zinc-950 relative perspective-[1000px]">
+    <>
+      {!isLoaded && <Loader onComplete={() => setIsLoaded(true)} />}
+      <AudioPlayer />
       
-      {/* Wrapper for parallax */}
+      <div ref={rootRef} className="w-full h-full overflow-hidden bg-zinc-950 relative perspective-[1000px]">
+        {/* Global Particle System */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <Particles isActive={isLoaded} count={30} color="bg-amber-500/40" />
+        </div>
+        
+        {/* Wrapper for parallax */}
       <div ref={wrapperRef} className="w-full h-full will-change-transform scale-105">
         
         {/* Slide Container - Moves vertically */}
@@ -255,5 +267,6 @@ export default function Presentation() {
       {/* Global Image Lightbox */}
       <Lightbox src={lightboxPhoto} onClose={() => setLightboxPhoto(null)} />
     </div>
+    </>
   );
 }

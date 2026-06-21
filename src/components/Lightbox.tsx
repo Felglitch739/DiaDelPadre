@@ -13,65 +13,64 @@ interface LightboxProps {
 export default function Lightbox({ src, onClose }: LightboxProps) {
   const backdropRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   const handleClose = useCallback(() => {
-    // Exit animation timeline
-    anime.timeline({
-      complete: onClose,
-    })
-      .add({
-        targets: backdropRef.current,
-        opacity: 0,
-        duration: 350,
-        easing: "easeOutQuad",
-      }, 0)
-      .add({
-        targets: contentRef.current,
-        scale: 0.8,
-        opacity: 0,
-        duration: 300,
-        easing: "easeOutQuad",
-      }, 0)
-      .add({
-        targets: closeButtonRef.current,
-        opacity: 0,
-        scale: 0.5,
-        duration: 250,
-        easing: "easeOutQuad",
-      }, 0);
+    anime({
+      targets: overlayRef.current,
+      opacity: 0,
+      duration: 400,
+      easing: "easeOutSine",
+      complete: () => {
+        if (overlayRef.current) overlayRef.current.style.pointerEvents = "none";
+        onClose();
+      }
+    });
+    anime({
+      targets: contentRef.current,
+      opacity: 0,
+      scale: 0.95,
+      duration: 400,
+      easing: "easeOutSine",
+    });
+    anime({
+      targets: closeButtonRef.current,
+      opacity: 0,
+      scale: 0.5,
+      duration: 250,
+      easing: "easeOutQuad",
+    });
   }, [onClose]);
 
   // Entrance animations on mount
   useEffect(() => {
     if (!src) return;
 
-    // Initial states
-    anime.set(backdropRef.current, { opacity: 0 });
-    anime.set(contentRef.current, { scale: 0.8, opacity: 0 });
-    anime.set(closeButtonRef.current, { scale: 0.5, opacity: 0 });
-
-    anime.timeline()
-      .add({
-        targets: backdropRef.current,
-        opacity: 1,
-        duration: 400,
-        easing: "easeOutQuad",
-      }, 0)
-      .add({
-        targets: contentRef.current,
-        scale: 1,
-        opacity: 1,
-        duration: 600,
-        easing: "easeOutElastic(1, .85)",
-      }, 0)
-      .add({
-        targets: closeButtonRef.current,
-        scale: 1,
-        opacity: 1,
-        duration: 400,
-        easing: "easeOutBack",
-      }, 150);
+    anime({
+      targets: overlayRef.current,
+      opacity: [0, 1],
+      duration: 400,
+      easing: "easeOutSine",
+      begin: () => {
+        if (overlayRef.current) overlayRef.current.style.pointerEvents = "auto";
+      }
+    });
+    anime({
+      targets: contentRef.current,
+      opacity: [0, 1],
+      scale: [0.95, 1],
+      duration: 500,
+      easing: "easeOutBack",
+    });
+    anime({
+      targets: closeButtonRef.current,
+      scale: [0.5, 1],
+      opacity: [0, 1],
+      duration: 400,
+      easing: "easeOutBack",
+      delay: 150
+    });
 
     // Escape key listener to close
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -91,13 +90,10 @@ export default function Lightbox({ src, onClose }: LightboxProps) {
   if (!src) return null;
 
   return (
-    <div
-      ref={backdropRef}
+    <div 
+      ref={overlayRef}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-xl opacity-0 pointer-events-none cursor-zoom-out"
       onClick={handleClose}
-      onWheel={stopPropagation}
-      onTouchStart={stopPropagation}
-      onTouchMove={stopPropagation}
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-zinc-950/90 backdrop-blur-xl p-4 md:p-8 cursor-zoom-out select-none"
     >
       {/* Close button */}
       <button

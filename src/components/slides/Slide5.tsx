@@ -3,8 +3,8 @@
 import React, { useEffect, useRef } from "react";
 import anime from "animejs";
 import Image from "next/image";
-import Particles from "../Particles";
 import SplitText from "../SplitText";
+import TiltPhoto from "../TiltPhoto";
 
 interface SlideProps {
   isActive: boolean;
@@ -115,8 +115,7 @@ export default function Slide5({ isActive, onPhotoClick }: SlideProps) {
       tl.add({
         targets: headingChars,
         opacity: [0, 1],
-        scale: [2, 1],
-        filter: ["blur(10px)", "blur(0px)"],
+        translateY: [20, 0],
         duration: 1200,
         delay: anime.stagger(50),
         easing: "easeOutExpo",
@@ -141,9 +140,6 @@ export default function Slide5({ isActive, onPhotoClick }: SlideProps) {
   return (
     <div className="w-full h-full relative flex flex-col items-center justify-center p-6 text-center overflow-hidden bg-zinc-950">
       
-      {/* Particle System */}
-      <Particles isActive={isActive} count={40} color="bg-amber-400" />
-
       {/* Background Montage Gallery */}
       <div 
         ref={galleryRef} 
@@ -154,25 +150,20 @@ export default function Slide5({ isActive, onPhotoClick }: SlideProps) {
             key={idx}
             className="outro-photo absolute w-36 md:w-56 aspect-[4/5] md:aspect-video pointer-events-auto hover:z-40! will-change-transform"
           >
-            <div
+            <TiltPhoto
+              src={src}
+              alt={`Memory ${idx}`}
+              className="outro-photo-inner w-full h-full relative rounded-xl overflow-hidden border border-zinc-800/80 shadow-2xl cursor-pointer transition-shadow duration-500 hover:border-amber-500/50 hover:shadow-amber-500/20"
+              sizes="(max-width: 768px) 192px, 320px"
               onClick={() => onPhotoClick(src)}
-              className="outro-photo-inner w-full h-full relative rounded-xl overflow-hidden border border-zinc-800/80 shadow-2xl cursor-pointer transition-all duration-500 hover:scale-110 hover:border-amber-500/50 hover:shadow-amber-500/20"
-            >
-              <Image 
-                src={src} 
-                alt={`Memory ${idx}`} 
-                fill 
-                sizes="(max-width: 768px) 192px, 320px"
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-700" 
-              />
-            </div>
+            />
           </div>
         ))}
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/40 via-zinc-950/80 to-zinc-950/90 z-5" />
+      <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/40 via-zinc-950/80 to-zinc-950/90 z-20 pointer-events-none" />
 
-      <div ref={containerRef} className="z-20 relative px-4 w-full max-w-[100vw]">
+      <div ref={containerRef} className="z-30 relative px-4 w-full max-w-[100vw] pointer-events-none">
         <h2 
           ref={headingRef}
           className="text-4xl md:text-8xl font-black mb-4 md:mb-6 text-transparent bg-clip-text bg-gradient-to-t from-zinc-400 to-zinc-50"

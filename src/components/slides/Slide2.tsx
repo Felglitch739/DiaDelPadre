@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import anime from "animejs";
 import Image from "next/image";
 import SplitText from "../SplitText";
+import TiltPhoto from "../TiltPhoto";
 
 interface SlideProps {
   isActive: boolean;
@@ -101,32 +102,30 @@ export default function Slide2({ isActive, onPhotoClick }: SlideProps) {
       >
         {/* Photo 1 (Back left) */}
         <div className="collage-photo absolute top-0 left-0 w-2/3 h-2/3 origin-bottom-left z-10 opacity-0 hover:z-40!">
-          <div 
+          <TiltPhoto
+            src="/photos/dad1.jpg"
+            alt="Dad 1"
+            innerClassName="w-full h-full rounded-xl overflow-hidden border border-zinc-800 shadow-2xl cursor-pointer transition-shadow duration-300 hover:shadow-amber-500/20"
             onClick={() => onPhotoClick("/photos/dad1.jpg")}
-            className="w-full h-full rounded-xl overflow-hidden border border-zinc-800 shadow-2xl cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-amber-500/20 relative"
-          >
-            <Image src="/photos/dad1.jpg" alt="Dad 1" fill className="object-cover" />
-            <div className="absolute inset-0 bg-amber-500/10 mix-blend-overlay" />
-          </div>
+          />
         </div>
         {/* Photo 2 (Back right) */}
         <div className="collage-photo absolute bottom-0 right-0 w-2/3 h-2/3 origin-top-right z-20 opacity-0 hover:z-40!">
-          <div 
+          <TiltPhoto
+            src="/photos/dad2.jpg"
+            alt="Dad 2"
+            innerClassName="w-full h-full rounded-xl overflow-hidden border border-zinc-800 shadow-2xl cursor-pointer transition-shadow duration-300 hover:shadow-amber-500/20"
             onClick={() => onPhotoClick("/photos/dad2.jpg")}
-            className="w-full h-full rounded-xl overflow-hidden border border-zinc-800 shadow-2xl cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-amber-500/20 relative"
-          >
-            <Image src="/photos/dad2.jpg" alt="Dad 2" fill className="object-cover" />
-          </div>
+          />
         </div>
         {/* Photo 3 (Front center) */}
         <div className="collage-photo absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 origin-center z-30 opacity-0 hover:z-40!">
-          <div 
+          <TiltPhoto
+            src="/photos/dad3.jpg"
+            alt="Dad 3"
+            innerClassName="w-full h-full rounded-2xl overflow-hidden border-2 border-zinc-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] cursor-pointer transition-shadow duration-300 hover:shadow-amber-500/30"
             onClick={() => onPhotoClick("/photos/dad3.jpg")}
-            className="w-full h-full rounded-2xl overflow-hidden border-2 border-zinc-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-amber-500/30 relative"
-          >
-            <Image src="/photos/dad3.jpg" alt="Dad 3" fill className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent" />
-          </div>
+          />
         </div>
       </div>
 

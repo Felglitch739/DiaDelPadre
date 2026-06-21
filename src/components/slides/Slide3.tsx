@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import anime from "animejs";
 import Image from "next/image";
 import SplitText from "../SplitText";
+import TiltPhoto from "../TiltPhoto";
 
 interface SlideProps {
   isActive: boolean;
@@ -117,36 +118,33 @@ export default function Slide3({ isActive, onPhotoClick }: SlideProps) {
       >
         {/* Polaroid 1 */}
         <div className="polaroid absolute top-0 right-10 w-48 aspect-[3/4] opacity-0 origin-bottom hover:z-40!">
-          <div 
+          <TiltPhoto
+            src="/photos/dad&mebaby2.jpg"
+            alt="Baby 1"
+            className="w-full h-full bg-white p-3 pb-12 shadow-2xl rounded-sm cursor-pointer transition-shadow duration-300 hover:shadow-amber-500/20"
+            innerClassName="bg-zinc-200 overflow-hidden"
             onClick={() => onPhotoClick("/photos/dad&mebaby2.jpg")}
-            className="w-full h-full bg-white p-3 pb-12 shadow-2xl rounded-sm cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-amber-500/20"
-          >
-            <div className="relative w-full h-full bg-zinc-200 overflow-hidden">
-              <Image src="/photos/dad&mebaby2.jpg" alt="Baby 1" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-500" />
-            </div>
-          </div>
+          />
         </div>
         {/* Polaroid 2 */}
         <div className="polaroid absolute bottom-0 left-0 w-56 aspect-[3/4] opacity-0 origin-bottom hover:z-40!">
-          <div 
+          <TiltPhoto
+            src="/photos/dad&mebaby3.jpg"
+            alt="Baby 2"
+            className="w-full h-full bg-white p-3 pb-14 shadow-2xl rounded-sm cursor-pointer transition-shadow duration-300 hover:shadow-amber-500/20"
+            innerClassName="bg-zinc-200 overflow-hidden"
             onClick={() => onPhotoClick("/photos/dad&mebaby3.jpg")}
-            className="w-full h-full bg-white p-3 pb-14 shadow-2xl rounded-sm cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-amber-500/20"
-          >
-            <div className="relative w-full h-full bg-zinc-200 overflow-hidden">
-              <Image src="/photos/dad&mebaby3.jpg" alt="Baby 2" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-500" />
-            </div>
-          </div>
+          />
         </div>
         {/* Polaroid 3 */}
         <div className="polaroid absolute top-1/4 left-20 w-52 aspect-[3/4] opacity-0 origin-bottom hover:z-40!">
-          <div 
+          <TiltPhoto
+            src="/photos/dad&mebaby4.jpg"
+            alt="Baby 3"
+            className="w-full h-full bg-white p-3 pb-12 shadow-2xl rounded-sm cursor-pointer transition-shadow duration-300 hover:shadow-amber-500/20"
+            innerClassName="bg-zinc-200 overflow-hidden"
             onClick={() => onPhotoClick("/photos/dad&mebaby4.jpg")}
-            className="w-full h-full bg-white p-3 pb-12 shadow-2xl rounded-sm cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-amber-500/20"
-          >
-            <div className="relative w-full h-full bg-zinc-200 overflow-hidden">
-              <Image src="/photos/dad&mebaby4.jpg" alt="Baby 3" fill className="object-cover" />
-            </div>
-          </div>
+          />
         </div>
       </div>
     </div>
