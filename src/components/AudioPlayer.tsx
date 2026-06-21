@@ -20,8 +20,7 @@ export default function AudioPlayer() {
     if (!audio) return;
     
     // Set dynamic source depending on environment
-    const isGithubPages = process.env.NODE_ENV === 'production';
-    const basePath = isGithubPages ? '/DiaDelPadre' : '';
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
     audio.src = `${basePath}/musica.mp3`;
 
     audio.volume = 0.5; // Soft volume by default

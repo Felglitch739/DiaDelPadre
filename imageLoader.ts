@@ -1,6 +1,5 @@
 export default function myImageLoader({ src }: { src: string }) {
-  const isGithubPages = process.env.GITHUB_PAGES === 'true';
-  const basePath = isGithubPages ? '/DiaDelPadre' : '';
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   
   // If the src already includes the basePath, don't duplicate it
   if (basePath && src.startsWith(basePath)) {

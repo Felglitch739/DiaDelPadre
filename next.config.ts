@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
   output: 'export',
   basePath,
   assetPrefix: isGithubPages ? '/DiaDelPadre/' : undefined,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   images: {
     loader: 'custom',
     loaderFile: './imageLoader.ts',
