@@ -98,10 +98,10 @@ export default function Slide2({ isActive, onPhotoClick }: SlideProps) {
 
       <div 
         ref={photosRef}
-        className="relative w-full max-w-[280px] md:max-w-md aspect-[4/5] z-10 flex-shrink-0"
+        className="relative w-full max-w-[320px] md:max-w-lg aspect-square z-10 flex-shrink-0"
       >
         {/* Photo 1 (Back left) */}
-        <div className="collage-photo absolute top-0 left-0 w-2/3 h-2/3 origin-bottom-left z-10 opacity-0 hover:z-40!">
+        <div className="collage-photo absolute top-0 left-0 w-[55%] h-[55%] origin-bottom-left z-10 opacity-0 hover:z-40!">
           <TiltPhoto
             src="/photos/dad1.jpg"
             alt="Dad 1"
@@ -111,7 +111,7 @@ export default function Slide2({ isActive, onPhotoClick }: SlideProps) {
           />
         </div>
         {/* Photo 2 (Back right) */}
-        <div className="collage-photo absolute bottom-0 right-0 w-2/3 h-2/3 origin-top-right z-20 opacity-0 hover:z-40!">
+        <div className="collage-photo absolute bottom-0 right-0 w-[55%] h-[55%] origin-top-right z-20 opacity-0 hover:z-40!">
           <TiltPhoto
             src="/photos/dad2.jpg"
             alt="Dad 2"
@@ -121,7 +121,7 @@ export default function Slide2({ isActive, onPhotoClick }: SlideProps) {
           />
         </div>
         {/* Photo 3 (Front center) */}
-        <div className="collage-photo absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 origin-center z-30 opacity-0 hover:z-40!">
+        <div className="collage-photo absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[65%] h-[65%] origin-center z-30 opacity-0 hover:z-40!">
           <TiltPhoto
             src="/photos/dad3.jpg"
             alt="Dad 3"

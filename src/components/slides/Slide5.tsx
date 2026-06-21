@@ -173,7 +173,7 @@ export default function Slide5({ isActive, onPhotoClick }: SlideProps) {
       <div ref={containerRef} className="z-30 relative px-4 w-full max-w-[100vw] pointer-events-none">
         <h2 
           ref={headingRef}
-          className="text-3xl sm:text-4xl md:text-8xl font-black mb-4 md:mb-6 text-transparent bg-clip-text bg-gradient-to-t from-zinc-400 to-zinc-50"
+          className="text-3xl sm:text-4xl md:text-8xl font-black mb-4 md:mb-6 text-zinc-100"
         >
           <SplitText>Gracias por todo.</SplitText>
         </h2>

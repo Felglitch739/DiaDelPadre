@@ -114,10 +114,10 @@ export default function Slide3({ isActive, onPhotoClick }: SlideProps) {
 
       <div
         ref={polaroidsRef}
-        className="relative w-full max-w-[300px] md:max-w-sm aspect-square z-10 flex-shrink-0 mb-8 md:mb-0"
+        className="relative w-full max-w-[350px] md:max-w-lg aspect-square z-10 flex-shrink-0 mb-8 md:mb-0"
       >
         {/* Polaroid 1 */}
-        <div className="polaroid absolute top-0 right-10 w-32 md:w-48 aspect-[3/4] opacity-0 origin-bottom hover:z-40!">
+        <div className="polaroid absolute top-0 right-0 w-24 md:w-40 aspect-[3/4] opacity-0 origin-bottom hover:z-40!">
           <TiltPhoto
             src="/photos/dad&mebaby2.jpg"
             alt="Baby 1"
@@ -127,7 +127,7 @@ export default function Slide3({ isActive, onPhotoClick }: SlideProps) {
           />
         </div>
         {/* Polaroid 2 */}
-        <div className="polaroid absolute bottom-0 left-0 w-40 md:w-56 aspect-[3/4] opacity-0 origin-bottom hover:z-40!">
+        <div className="polaroid absolute bottom-0 left-0 w-32 md:w-48 aspect-[3/4] opacity-0 origin-bottom hover:z-40!">
           <TiltPhoto
             src="/photos/dad&mebaby3.jpg"
             alt="Baby 2"
@@ -137,7 +137,7 @@ export default function Slide3({ isActive, onPhotoClick }: SlideProps) {
           />
         </div>
         {/* Polaroid 3 */}
-        <div className="polaroid absolute top-1/4 left-10 md:left-20 w-36 md:w-52 aspect-[3/4] opacity-0 origin-bottom hover:z-40!">
+        <div className="polaroid absolute top-1/3 left-1/2 -translate-x-1/2 w-28 md:w-44 aspect-[3/4] opacity-0 origin-bottom hover:z-40!">
           <TiltPhoto
             src="/photos/dad&mebaby4.jpg"
             alt="Baby 3"
