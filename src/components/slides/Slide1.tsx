@@ -96,8 +96,8 @@ export default function Slide1({ isActive }: SlideProps) {
           src="/photos/youngerDad.jpg" 
           alt="Dad" 
           fill 
-          className="object-contain md:object-cover grayscale"
-          style={{ objectPosition: "center 30%" }}
+          className="object-cover grayscale"
+          style={{ objectPosition: "center 25%" }}
           priority
         />
         {/* Gradient vignette — lighter than before so the face shows through */}

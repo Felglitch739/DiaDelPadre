@@ -19,7 +19,7 @@ export default function Slide4({ isActive, onPhotoClick }: SlideProps) {
 
   useEffect(() => {
     if (!containerRef.current || !bodyRef.current) return;
-    
+
     const headingChars = containerRef.current.querySelectorAll("h2 .split-char");
     // We will select words instead of chars for the paragraph
     const bodyWords = bodyRef.current.querySelectorAll(".word");
@@ -77,27 +77,27 @@ export default function Slide4({ isActive, onPhotoClick }: SlideProps) {
     }
   }, [isActive]);
 
-  const paragraphText = "Gracias a ti estoy donde estoy, soy quien soy y llegaré a ser alguien muy exitoso. A lo mejor ahorita no te lo puedo pagar o no te lo demuestro como debería, pero te prometo esto: todos tus esfuerzos, desvelos y enseñanzas van a valer la pena. Todo te lo debo a ti.";
+  const paragraphText = "Gracias a ti estoy donde estoy, soy quien soy y llegaré a ser alguien muy exitoso. A lo mejor ahorita no te lo puedo pagar o no te lo demuestro como debería, pero te prometo que todos tus esfuerzos, desvelos y enseñanzas van a valer la pena. Todo te lo debo a ti.";
   const words = paragraphText.split(" ");
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="w-full h-full flex flex-col md:flex-row items-center justify-center p-4 py-16 md:p-16 gap-8 md:gap-12 max-w-7xl mx-auto relative overflow-hidden"
     >
       <div className="flex-1 pl-6 md:pl-12 relative z-20">
-        <div 
+        <div
           ref={accentRef}
           className="absolute left-0 top-0 bottom-0 w-1 md:w-2 bg-gradient-to-b from-amber-600 via-amber-400 to-transparent origin-top opacity-0 rounded-full shadow-[0_0_15px_rgba(245,158,11,0.8)]"
         />
-        
-        <h2 
+
+        <h2
           ref={headingRef}
           className="text-4xl md:text-7xl font-bold mb-6 md:mb-8 text-amber-500 tracking-tight"
         >
           <SplitText>La promesa</SplitText>
         </h2>
-        <p 
+        <p
           ref={bodyRef}
           className="text-lg md:text-3xl text-zinc-300 leading-relaxed font-light"
         >
@@ -109,19 +109,19 @@ export default function Slide4({ isActive, onPhotoClick }: SlideProps) {
         </p>
       </div>
 
-      <div 
+      <div
         ref={photoRef}
         className="w-1/2 max-w-[200px] md:w-full md:max-w-md aspect-[3/4] relative z-10 opacity-0 mt-8 md:mt-0"
       >
-        <div 
+        <div
           onClick={() => onPhotoClick("/photos/me&dadinmyhsgraduation.jpg")}
           className="w-full h-full rounded-2xl overflow-hidden border border-zinc-700 shadow-[0_0_40px_rgba(0,0,0,0.8)] cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-amber-500/30 hover:border-amber-500/50 relative"
         >
-          <Image 
-            src="/photos/me&dadinmyhsgraduation.jpg" 
-            alt="Graduation" 
-            fill 
-            className="object-cover" 
+          <Image
+            src="/photos/me&dadinmyhsgraduation.jpg"
+            alt="Graduation"
+            fill
+            className="object-cover"
           />
           {/* Cinematic glow */}
           <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/20 to-transparent mix-blend-overlay" />

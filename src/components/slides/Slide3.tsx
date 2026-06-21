@@ -20,7 +20,7 @@ export default function Slide3({ isActive, onPhotoClick }: SlideProps) {
 
   useEffect(() => {
     if (!containerRef.current || !polaroidsRef.current) return;
-    
+
     const headingChars = containerRef.current.querySelectorAll("h2 .split-char");
     const polaroids = polaroidsRef.current.querySelectorAll(".polaroid");
     const rings = svgRingsRef.current?.querySelectorAll("circle");
@@ -81,14 +81,14 @@ export default function Slide3({ isActive, onPhotoClick }: SlideProps) {
   }, [isActive]);
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="w-full h-full relative flex flex-col-reverse md:flex-row items-center justify-center p-6 py-20 md:p-16 gap-12 md:gap-24 max-w-7xl mx-auto overflow-hidden"
     >
       {/* SVG Steel Rings Background */}
-      <svg 
-        ref={svgRingsRef} 
-        className="absolute inset-0 w-full h-full text-zinc-500 pointer-events-none" 
+      <svg
+        ref={svgRingsRef}
+        className="absolute inset-0 w-full h-full text-zinc-500 pointer-events-none"
         viewBox="0 0 1000 1000"
       >
         <circle cx="500" cy="500" r="200" stroke="currentColor" strokeWidth="2" fill="none" className="opacity-0" />
@@ -98,21 +98,21 @@ export default function Slide3({ isActive, onPhotoClick }: SlideProps) {
       </svg>
 
       <div className="flex-1 flex flex-col justify-center max-w-xl z-20 relative">
-        <h2 
+        <h2
           ref={headingRef}
           className="text-3xl md:text-6xl font-black mb-4 md:mb-6 text-zinc-100 leading-tight uppercase tracking-tighter"
         >
           <SplitText>Paciencia de acero</SplitText>
         </h2>
-        <p 
+        <p
           ref={bodyRef}
           className="text-base md:text-xl text-zinc-300 leading-relaxed font-light opacity-0 bg-zinc-900/60 p-4 md:p-6 border-l-4 border-amber-500 rounded-r-xl backdrop-blur-md"
         >
-          Sé el peso que cargas y todo lo que haces por mantenernos bien, aparte de la paciencia infinita que tienes (sobre todo para aguantar a mi mamá cuando el Hashimoto la pone modo irritable jsjsj). Eres nuestro centro de equilibrio y el héroe detrás de cámaras de esta casa.
+          Sé el peso que cargas y todo lo que haces por mantenernos bien, aparte de la paciencia infinita que tienes (sobre todo para aguantar a má cuando el Hashimoto la pone irritable jsjsj). Eres nuestro centro de equilibrio y el héroe detrás de cámaras de esta casa.
         </p>
       </div>
 
-      <div 
+      <div
         ref={polaroidsRef}
         className="relative w-full max-w-[300px] md:max-w-sm aspect-square z-10 flex-shrink-0 mb-8 md:mb-0"
       >

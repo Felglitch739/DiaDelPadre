@@ -30,9 +30,9 @@ function SlideSection({ children, index, onVisible }: { children: (isActive: boo
     <div ref={ref} id={`slide-${index}`} className="w-full min-h-screen relative flex items-center justify-center overflow-hidden">
       {/* We pass hasEntered so that once a slide is scrolled into view, it animates and STAYS visible forever */}
       {/* We also add a subtle gradient to blend the sections seamlessly */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-zinc-950 to-transparent z-10 pointer-events-none" />
       {children(hasEntered)}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-zinc-950 to-transparent z-10 pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-zinc-950 to-transparent z-50 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-zinc-950 to-transparent z-50 pointer-events-none" />
     </div>
   );
 }
