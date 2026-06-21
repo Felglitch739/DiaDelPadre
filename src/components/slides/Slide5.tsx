@@ -117,7 +117,7 @@ export default function Slide5({ isActive, onPhotoClick }: SlideProps) {
         easing: "linear",
       }, 0);
 
-      // Main Text appears AFTER all photos
+      // Main Text appears much earlier while photos are still appearing
       tl.add({
         targets: headingChars,
         opacity: [0, 1],
@@ -125,7 +125,7 @@ export default function Slide5({ isActive, onPhotoClick }: SlideProps) {
         duration: 1200,
         delay: anime.stagger(50),
         easing: "easeOutExpo",
-      }, 3000);
+      }, 1000);
 
       tl.add({
         targets: subtitleRef.current,
