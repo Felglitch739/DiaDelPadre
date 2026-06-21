@@ -110,7 +110,7 @@ export default function Slide1({ isActive }: SlideProps) {
       <div className="z-10 perspective-[1000px]">
         <h1 
           ref={headlineRef} 
-          className="text-5xl md:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-amber-100 via-amber-400 to-amber-700 mb-6 drop-shadow-2xl"
+          className="text-5xl md:text-8xl font-black tracking-tighter text-amber-100 mb-6 drop-shadow-2xl"
         >
           <SplitText>Para el motor de esta familia.</SplitText>
         </h1>

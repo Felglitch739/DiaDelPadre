@@ -105,6 +105,7 @@ export default function Slide2({ isActive, onPhotoClick }: SlideProps) {
           <TiltPhoto
             src="/photos/dad1.jpg"
             alt="Dad 1"
+            className="w-full h-full"
             innerClassName="w-full h-full rounded-xl overflow-hidden border border-zinc-800 shadow-2xl cursor-pointer transition-shadow duration-300 hover:shadow-amber-500/20"
             onClick={() => onPhotoClick("/photos/dad1.jpg")}
           />
@@ -114,6 +115,7 @@ export default function Slide2({ isActive, onPhotoClick }: SlideProps) {
           <TiltPhoto
             src="/photos/dad2.jpg"
             alt="Dad 2"
+            className="w-full h-full"
             innerClassName="w-full h-full rounded-xl overflow-hidden border border-zinc-800 shadow-2xl cursor-pointer transition-shadow duration-300 hover:shadow-amber-500/20"
             onClick={() => onPhotoClick("/photos/dad2.jpg")}
           />
@@ -123,6 +125,7 @@ export default function Slide2({ isActive, onPhotoClick }: SlideProps) {
           <TiltPhoto
             src="/photos/dad3.jpg"
             alt="Dad 3"
+            className="w-full h-full"
             innerClassName="w-full h-full rounded-2xl overflow-hidden border-2 border-zinc-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] cursor-pointer transition-shadow duration-300 hover:shadow-amber-500/30"
             onClick={() => onPhotoClick("/photos/dad3.jpg")}
           />

@@ -153,7 +153,8 @@ export default function Slide5({ isActive, onPhotoClick }: SlideProps) {
             <TiltPhoto
               src={src}
               alt={`Memory ${idx}`}
-              className="outro-photo-inner w-full h-full relative rounded-xl overflow-hidden border border-zinc-800/80 shadow-2xl cursor-pointer transition-shadow duration-500 hover:border-amber-500/50 hover:shadow-amber-500/20"
+              className="w-full h-full"
+              innerClassName="outro-photo-inner w-full h-full relative rounded-xl overflow-hidden border border-zinc-800/80 shadow-2xl cursor-pointer transition-shadow duration-500 hover:border-amber-500/50 hover:shadow-amber-500/20"
               sizes="(max-width: 768px) 192px, 320px"
               onClick={() => onPhotoClick(src)}
             />
