@@ -83,7 +83,7 @@ export default function Slide3({ isActive, onPhotoClick }: SlideProps) {
   return (
     <div 
       ref={containerRef}
-      className="w-full h-full relative flex flex-col-reverse md:flex-row items-center justify-center p-8 md:p-16 gap-12 md:gap-24 max-w-7xl mx-auto overflow-hidden"
+      className="w-full h-full relative flex flex-col-reverse md:flex-row items-center justify-center p-4 py-16 md:p-16 gap-8 md:gap-24 max-w-7xl mx-auto overflow-hidden"
     >
       {/* SVG Steel Rings Background */}
       <svg 
@@ -100,13 +100,13 @@ export default function Slide3({ isActive, onPhotoClick }: SlideProps) {
       <div className="flex-1 flex flex-col justify-center max-w-xl z-20 relative">
         <h2 
           ref={headingRef}
-          className="text-4xl md:text-6xl font-black mb-6 text-zinc-100 leading-tight uppercase tracking-tighter"
+          className="text-3xl md:text-6xl font-black mb-4 md:mb-6 text-zinc-100 leading-tight uppercase tracking-tighter"
         >
           <SplitText>Paciencia de acero</SplitText>
         </h2>
         <p 
           ref={bodyRef}
-          className="text-lg md:text-xl text-zinc-300 leading-relaxed font-light opacity-0 bg-zinc-900/60 p-6 border-l-4 border-amber-500 rounded-r-xl backdrop-blur-md"
+          className="text-base md:text-xl text-zinc-300 leading-relaxed font-light opacity-0 bg-zinc-900/60 p-4 md:p-6 border-l-4 border-amber-500 rounded-r-xl backdrop-blur-md"
         >
           Sé el peso que cargas y todo lo que haces por mantenernos bien, aparte de la paciencia infinita que tienes (sobre todo para aguantar a mi mamá cuando el Hashimoto la pone modo irritable jsjsj). Eres nuestro centro de equilibrio y el héroe detrás de cámaras de esta casa.
         </p>
@@ -114,10 +114,10 @@ export default function Slide3({ isActive, onPhotoClick }: SlideProps) {
 
       <div 
         ref={polaroidsRef}
-        className="relative w-2/3 max-w-[260px] md:w-full md:max-w-sm aspect-square z-10 flex-shrink-0"
+        className="relative w-1/2 max-w-[200px] md:w-full md:max-w-sm aspect-square z-10 flex-shrink-0 mt-8 md:mt-0"
       >
         {/* Polaroid 1 */}
-        <div className="polaroid absolute top-0 right-10 w-48 aspect-[3/4] opacity-0 origin-bottom hover:z-40!">
+        <div className="polaroid absolute top-0 right-10 w-32 md:w-48 aspect-[3/4] opacity-0 origin-bottom hover:z-40!">
           <TiltPhoto
             src="/photos/dad&mebaby2.jpg"
             alt="Baby 1"
@@ -127,7 +127,7 @@ export default function Slide3({ isActive, onPhotoClick }: SlideProps) {
           />
         </div>
         {/* Polaroid 2 */}
-        <div className="polaroid absolute bottom-0 left-0 w-56 aspect-[3/4] opacity-0 origin-bottom hover:z-40!">
+        <div className="polaroid absolute bottom-0 left-0 w-40 md:w-56 aspect-[3/4] opacity-0 origin-bottom hover:z-40!">
           <TiltPhoto
             src="/photos/dad&mebaby3.jpg"
             alt="Baby 2"
@@ -137,7 +137,7 @@ export default function Slide3({ isActive, onPhotoClick }: SlideProps) {
           />
         </div>
         {/* Polaroid 3 */}
-        <div className="polaroid absolute top-1/4 left-20 w-52 aspect-[3/4] opacity-0 origin-bottom hover:z-40!">
+        <div className="polaroid absolute top-1/4 left-10 md:left-20 w-36 md:w-52 aspect-[3/4] opacity-0 origin-bottom hover:z-40!">
           <TiltPhoto
             src="/photos/dad&mebaby4.jpg"
             alt="Baby 3"

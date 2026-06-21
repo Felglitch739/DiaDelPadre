@@ -82,7 +82,7 @@ export default function Slide2({ isActive, onPhotoClick }: SlideProps) {
   return (
     <div 
       ref={containerRef}
-      className="w-full h-full relative flex flex-col md:flex-row items-center justify-center p-8 md:p-16 gap-12 md:gap-24 max-w-7xl mx-auto overflow-hidden"
+      className="w-full h-full relative flex flex-col md:flex-row items-center justify-center p-4 py-16 md:p-16 gap-8 md:gap-24 max-w-7xl mx-auto overflow-hidden"
     >
       {/* SVG Background Pillar */}
       <svg 
@@ -98,7 +98,7 @@ export default function Slide2({ isActive, onPhotoClick }: SlideProps) {
 
       <div 
         ref={photosRef}
-        className="relative w-2/3 max-w-[260px] md:w-full md:max-w-md aspect-[4/5] z-10 flex-shrink-0"
+        className="relative w-1/2 max-w-[200px] md:w-full md:max-w-md aspect-[4/5] z-10 flex-shrink-0"
       >
         {/* Photo 1 (Back left) */}
         <div className="collage-photo absolute top-0 left-0 w-2/3 h-2/3 origin-bottom-left z-10 opacity-0 hover:z-40!">
@@ -135,13 +135,13 @@ export default function Slide2({ isActive, onPhotoClick }: SlideProps) {
       <div className="flex-1 flex flex-col justify-center max-w-xl z-20 relative">
         <h2 
           ref={headingRef}
-          className="text-4xl md:text-6xl font-bold mb-6 text-zinc-100 leading-tight"
+          className="text-3xl md:text-6xl font-bold mb-4 md:mb-6 text-zinc-100 leading-tight"
         >
           <SplitText>El pilar que no siempre se ve</SplitText>
         </h2>
         <p 
           ref={bodyRef}
-          className="text-lg md:text-2xl text-zinc-400 leading-relaxed font-light opacity-0 bg-zinc-950/50 p-4 rounded-xl backdrop-blur-sm border border-zinc-800/50"
+          className="text-base md:text-2xl text-zinc-400 leading-relaxed font-light opacity-0 bg-zinc-950/50 p-4 rounded-xl backdrop-blur-sm border border-zinc-800/50"
         >
           Pa, quiero aprovechar hoy para agradecerte lo que a veces no te decimos lo suficiente: sin ti no seríamos nada. Gracias por ser el que siempre ve por nosotros, el que nos entiende y el que mantiene a esta familia a flote en todo momento.
         </p>

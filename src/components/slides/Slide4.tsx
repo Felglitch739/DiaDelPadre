@@ -83,7 +83,7 @@ export default function Slide4({ isActive, onPhotoClick }: SlideProps) {
   return (
     <div 
       ref={containerRef}
-      className="w-full h-full flex flex-col md:flex-row items-center justify-center p-8 md:p-16 gap-12 max-w-7xl mx-auto relative overflow-hidden"
+      className="w-full h-full flex flex-col md:flex-row items-center justify-center p-4 py-16 md:p-16 gap-8 md:gap-12 max-w-7xl mx-auto relative overflow-hidden"
     >
       <div className="flex-1 pl-6 md:pl-12 relative z-20">
         <div 
@@ -93,13 +93,13 @@ export default function Slide4({ isActive, onPhotoClick }: SlideProps) {
         
         <h2 
           ref={headingRef}
-          className="text-5xl md:text-7xl font-bold mb-8 text-amber-500 tracking-tight"
+          className="text-4xl md:text-7xl font-bold mb-6 md:mb-8 text-amber-500 tracking-tight"
         >
           <SplitText>La promesa</SplitText>
         </h2>
         <p 
           ref={bodyRef}
-          className="text-xl md:text-3xl text-zinc-300 leading-relaxed font-light"
+          className="text-lg md:text-3xl text-zinc-300 leading-relaxed font-light"
         >
           {words.map((word, i) => (
             <span key={i} className="word inline-block mr-2 opacity-0">
@@ -111,7 +111,7 @@ export default function Slide4({ isActive, onPhotoClick }: SlideProps) {
 
       <div 
         ref={photoRef}
-        className="w-1/2 max-w-[220px] md:w-full md:max-w-md aspect-[3/4] relative z-10 opacity-0"
+        className="w-1/2 max-w-[200px] md:w-full md:max-w-md aspect-[3/4] relative z-10 opacity-0 mt-8 md:mt-0"
       >
         <div 
           onClick={() => onPhotoClick("/photos/me&dadinmyhsgraduation.jpg")}

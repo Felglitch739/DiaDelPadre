@@ -148,7 +148,7 @@ export default function Slide5({ isActive, onPhotoClick }: SlideProps) {
         {ALL_PHOTOS.map((src, idx) => (
           <div 
             key={idx}
-            className="outro-photo absolute w-36 md:w-56 aspect-[4/5] md:aspect-video pointer-events-auto hover:z-40! will-change-transform"
+            className="outro-photo absolute w-24 md:w-56 aspect-[4/5] md:aspect-video pointer-events-auto hover:z-40! will-change-transform"
           >
             <TiltPhoto
               src={src}
