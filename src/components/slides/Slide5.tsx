@@ -64,14 +64,20 @@ export default function Slide5({ isActive, onPhotoClick }: SlideProps) {
         const col = cellIdx % cols;
         const row = Math.floor(cellIdx / cols);
 
-        // Calculate percentage position within the viewport
-        // Each cell spans (100/cols)% wide and (100/rows)% tall
+        // Calculate percentage position within the viewport, adding safe padding
         const cellW = 100 / cols;
         const cellH = 100 / rows;
 
-        // Center of the cell + small random jitter (±25% of cell size)
-        const xPercent = cellW * col + cellW * 0.5 + (Math.random() - 0.5) * cellW * 0.5;
-        const yPercent = cellH * row + cellH * 0.5 + (Math.random() - 0.5) * cellH * 0.5;
+        const paddingX = window.innerWidth < 768 ? 20 : 10;
+        const paddingY = window.innerWidth < 768 ? 20 : 10;
+        const safeW = 100 - paddingX * 2;
+        const safeH = 100 - paddingY * 2;
+
+        const rawX = cellW * col + cellW * 0.5 + (Math.random() - 0.5) * cellW * 0.5;
+        const rawY = cellH * row + cellH * 0.5 + (Math.random() - 0.5) * cellH * 0.5;
+
+        const xPercent = paddingX + rawX * (safeW / 100);
+        const yPercent = paddingY + rawY * (safeH / 100);
 
         // Convert to viewport-relative transform from center
         // Photos start at center (50%, 50%), so offset = position - 50%
@@ -167,7 +173,7 @@ export default function Slide5({ isActive, onPhotoClick }: SlideProps) {
       <div ref={containerRef} className="z-30 relative px-4 w-full max-w-[100vw] pointer-events-none">
         <h2 
           ref={headingRef}
-          className="text-4xl md:text-8xl font-black mb-4 md:mb-6 text-transparent bg-clip-text bg-gradient-to-t from-zinc-400 to-zinc-50"
+          className="text-3xl sm:text-4xl md:text-8xl font-black mb-4 md:mb-6 text-transparent bg-clip-text bg-gradient-to-t from-zinc-400 to-zinc-50"
         >
           <SplitText>Gracias por todo.</SplitText>
         </h2>

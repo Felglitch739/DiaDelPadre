@@ -82,7 +82,7 @@ export default function Slide2({ isActive, onPhotoClick }: SlideProps) {
   return (
     <div 
       ref={containerRef}
-      className="w-full h-full relative flex flex-col md:flex-row items-center justify-center p-4 py-16 md:p-16 gap-8 md:gap-24 max-w-7xl mx-auto overflow-hidden"
+      className="w-full h-full relative flex flex-col md:flex-row items-center justify-center p-6 py-20 md:p-16 gap-12 md:gap-24 max-w-7xl mx-auto overflow-hidden"
     >
       {/* SVG Background Pillar */}
       <svg 
@@ -98,7 +98,7 @@ export default function Slide2({ isActive, onPhotoClick }: SlideProps) {
 
       <div 
         ref={photosRef}
-        className="relative w-1/2 max-w-[200px] md:w-full md:max-w-md aspect-[4/5] z-10 flex-shrink-0"
+        className="relative w-full max-w-[280px] md:max-w-md aspect-[4/5] z-10 flex-shrink-0"
       >
         {/* Photo 1 (Back left) */}
         <div className="collage-photo absolute top-0 left-0 w-2/3 h-2/3 origin-bottom-left z-10 opacity-0 hover:z-40!">

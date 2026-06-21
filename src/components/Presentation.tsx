@@ -28,9 +28,11 @@ function SlideSection({ children, index, onVisible }: { children: (isActive: boo
 
   return (
     <div ref={ref} id={`slide-${index}`} className="w-full min-h-screen relative flex items-center justify-center overflow-hidden">
-      {/* We pass true if it is in view OR if it has entered at least once so the animation doesn't completely disappear when scrolling past, but wait, anime.js animations reset if isActive is false in the current slide implementations! */}
-      {/* Actually, the current slides are built to reset to opacity 0 when isActive=false. Let's just pass inView. */}
-      {children(inView)}
+      {/* We pass hasEntered so that once a slide is scrolled into view, it animates and STAYS visible forever */}
+      {/* We also add a subtle gradient to blend the sections seamlessly */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-zinc-950 to-transparent z-10 pointer-events-none" />
+      {children(hasEntered)}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-zinc-950 to-transparent z-10 pointer-events-none" />
     </div>
   );
 }

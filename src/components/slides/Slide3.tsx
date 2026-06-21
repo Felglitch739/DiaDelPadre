@@ -83,7 +83,7 @@ export default function Slide3({ isActive, onPhotoClick }: SlideProps) {
   return (
     <div 
       ref={containerRef}
-      className="w-full h-full relative flex flex-col-reverse md:flex-row items-center justify-center p-4 py-16 md:p-16 gap-8 md:gap-24 max-w-7xl mx-auto overflow-hidden"
+      className="w-full h-full relative flex flex-col-reverse md:flex-row items-center justify-center p-6 py-20 md:p-16 gap-12 md:gap-24 max-w-7xl mx-auto overflow-hidden"
     >
       {/* SVG Steel Rings Background */}
       <svg 
@@ -114,7 +114,7 @@ export default function Slide3({ isActive, onPhotoClick }: SlideProps) {
 
       <div 
         ref={polaroidsRef}
-        className="relative w-1/2 max-w-[200px] md:w-full md:max-w-sm aspect-square z-10 flex-shrink-0 mt-8 md:mt-0"
+        className="relative w-full max-w-[300px] md:max-w-sm aspect-square z-10 flex-shrink-0 mb-8 md:mb-0"
       >
         {/* Polaroid 1 */}
         <div className="polaroid absolute top-0 right-10 w-32 md:w-48 aspect-[3/4] opacity-0 origin-bottom hover:z-40!">
