@@ -92,7 +92,7 @@ export default function Lightbox({ src, onClose }: LightboxProps) {
   return (
     <div 
       ref={overlayRef}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-xl opacity-0 pointer-events-none cursor-zoom-out"
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/80 backdrop-blur-xl opacity-0 pointer-events-none cursor-zoom-out p-4 md:p-8"
       onClick={handleClose}
     >
       {/* Close button */}

@@ -36,11 +36,11 @@ export default function Particles({ count = 40, color = "bg-amber-500", isActive
     if (isActive) {
       anime({
         targets: particles,
-        translateY: () => [anime.random(0, 100) + "vh", "-10vh"],
-        translateX: () => [anime.random(-50, 50) + "vw", anime.random(-50, 50) + "vw"],
-        scale: () => [0, anime.random(0.2, 1.5)],
+        translateY: () => [anime.random(20, 100) + "vh", anime.random(-100, -120) + "vh"],
+        translateX: () => [anime.random(-20, 20) + "vw", anime.random(-50, 50) + "vw"],
+        scale: () => [0, anime.random(0.5, 1.5)],
         opacity: () => [0, anime.random(0.2, 0.8), 0],
-        duration: () => anime.random(5000, 15000),
+        duration: () => anime.random(10000, 20000),
         delay: () => anime.random(0, 2000),
         easing: "linear",
         loop: true,
