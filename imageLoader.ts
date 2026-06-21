@@ -1,9 +1,9 @@
 export default function myImageLoader({ src }: { src: string }) {
-  const isProd = process.env.NODE_ENV === 'production';
-  const basePath = isProd ? '/DiaDelPadre' : '';
+  const isGithubPages = process.env.GITHUB_PAGES === 'true';
+  const basePath = isGithubPages ? '/DiaDelPadre' : '';
   
-  // If the src already starts with the basePath (e.g., from Next.js internal routing), don't add it again
-  if (src.startsWith(basePath)) {
+  // If the src already includes the basePath, don't duplicate it
+  if (basePath && src.startsWith(basePath)) {
     return src;
   }
   
