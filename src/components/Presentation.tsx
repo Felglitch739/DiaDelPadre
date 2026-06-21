@@ -27,7 +27,7 @@ function SlideSection({ children, index, onVisible }: { children: (isActive: boo
   }, [inView, index, onVisible]);
 
   return (
-    <div ref={ref} id={`slide-${index}`} className="w-full min-h-screen relative flex items-center justify-center overflow-hidden">
+    <div ref={ref} id={`slide-${index}`} className="w-full min-h-screen relative flex flex-col items-stretch overflow-hidden">
       {/* We pass hasEntered so that once a slide is scrolled into view, it animates and STAYS visible forever */}
       {/* We also add a subtle gradient to blend the sections seamlessly */}
       {children(hasEntered)}

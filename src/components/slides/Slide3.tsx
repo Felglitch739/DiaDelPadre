@@ -83,7 +83,7 @@ export default function Slide3({ isActive, onPhotoClick }: SlideProps) {
   return (
     <div
       ref={containerRef}
-      className="w-full h-full relative flex flex-col-reverse md:flex-row items-center justify-center p-6 py-20 md:p-16 gap-12 md:gap-24 max-w-7xl mx-auto overflow-hidden"
+      className="w-full min-h-screen flex-1 relative flex flex-col-reverse md:flex-row items-center justify-center p-6 py-20 md:p-16 gap-12 md:gap-24 max-w-7xl mx-auto overflow-hidden"
     >
       {/* SVG Steel Rings Background */}
       <svg

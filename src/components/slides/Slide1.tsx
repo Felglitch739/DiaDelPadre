@@ -85,7 +85,7 @@ export default function Slide1({ isActive }: SlideProps) {
   }, [isActive]);
 
   return (
-    <div ref={containerRef} className="w-full h-full relative flex flex-col items-center justify-center p-6 text-center overflow-hidden">
+    <div ref={containerRef} className="w-full min-h-screen flex-1 relative flex flex-col items-center justify-center p-6 text-center overflow-hidden">
       
       {/* Background SVG Grid */}
       <BackgroundGrid isActive={isActive} />
